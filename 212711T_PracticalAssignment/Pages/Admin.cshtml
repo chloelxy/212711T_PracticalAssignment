@@ -1,0 +1,95 @@
+﻿@page
+@model _212711T_PracticalAssignment.Pages.AdminModel
+@{
+}
+
+<div class="container mt-5">
+
+	<div class="row justify-content-center align-items-center">
+
+		<div class="col-sm-12 col-md-12 col-lg-4">
+			<h1 class="mb-3">Register </h1>
+
+			<form method="post">
+				<div asp-validation-summary="All" class="text-danger"></div>
+
+				<div class="mb-3">
+					<label class="form-label" asp-for="AModel.FirstName">First Name</label>
+					<input type="Text" asp-for="AModel.FirstName" class="form-control" />
+					<span asp-validaton-for="AModel.FirstName" class="text-danger"></span>
+				</div>
+
+				<div class="mb-3">
+					<label class="form-label" asp-for="AModel.LastName">Last Name</label>
+					<input type="Text" asp-for="AModel.LastName" class="form-control" />
+					<span asp-validaton-for="AModel.LastName" class="text-danger"></span>
+				</div>
+
+				<div class="mb-3">
+					<label class="col-sm-2 col-form-label" asp-for="AModel.Gender"></label>
+					<div class="col-sm-10 d-flex align-items-center">
+						<div class="form-check form-check-inline">
+							@Html.RadioButtonFor(m => m.AModel.Gender, "M", new {@class = "form-check-input"})
+							<label class="form-check-label">Male</label>
+						</div>
+						<div class="form-check form-check-inline">
+							@Html.RadioButtonFor(m => m.AModel.Gender, "F", new {@class = "form-check-input"})
+							<label class="form-check-label">Female</label>
+						</div>
+						<span asp-validation-for="AModel.Gender" class="text-danger"></span>
+					</div>
+				</div>
+
+				<div class="mb-3">
+					<label class="form-label" asp-for="AModel.NRIC">NRIC</label>
+					<input type="Text" asp-for="AModel.NRIC" class="form-control" />
+					<span asp-validaton-for="AModel.NRIC" class="text-danger"></span>
+				</div>
+
+
+				<div class="mb-3">
+					<label class="form-label" asp-for="AModel.Email">Email Address</label>
+					<input type="Text" asp-for="AModel.Email" class="form-control" />
+					<span asp-validaton-for="AModel.Email" class="text-danger"></span>
+				</div>
+
+				<div class="mb-3">
+					<label class="form-label" asp-for="AModel.BirthDate">Date Of Birth</label>
+					<input class="form-control" asp-for="AModel.BirthDate" />
+					<span asp-validation-for="AModel.BirthDate" class="text-danger"></span>
+				</div>
+
+				<div class="col-md-4">
+					<div class="mb-3">
+						<input type="file" accept=".pdf, .docx" asp-for="AModel.Resume"
+							   class="form-control" onchange="" style="width: auto" />
+						<span asp-validation-for="AModel.Resume" class="text-danger"></span>
+					</div>
+				</div>
+
+
+				<div class="mb-3">
+					<label class="form-label" asp-for="AModel.WhoamI">WhoamI</label>
+					<input type="Text" asp-for="AModel.WhoamI" class="form-control" />
+					<span asp-validaton-for="AModel.WhoamI" class="text-danger"></span>
+				</div>
+
+				<div class="mb-3">
+					<label class="form-label" asp-for="AModel.Password">Password</label>
+					<input type="password" asp-for="AModel.Password" class="form-control" />
+					<span asp-validaton-for="AModel.Password" class="text-danger"></span>
+				</div>
+
+				<div class="mb-3">
+					<label class="form-label" asp-for="AModel.ConfirmPassword">Confirm Password</label>
+					<input type="password" asp-for="AModel.ConfirmPassword" class="form-control" />
+					<span asp-validaton-for="AModel.ConfirmPassword" class="text-danger"></span>
+				</div>
+
+				<div class="mb-3">
+					<button type="submit" class="btn btn-primary">Register</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

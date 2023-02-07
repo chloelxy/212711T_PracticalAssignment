@@ -1,0 +1,148 @@
+﻿@page
+@model _212711T_PracticalAssignment.Pages.RegisterModel
+
+
+<link rel="stylesheet" href="~/css/error.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/Login.css" asp-append-version="true" />
+@{
+	var untrustedInput = "<\"123\">";
+}
+
+@untrustedInput
+
+
+<section class="vh-100">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-6 text-black">
+
+        <div class="d-flex align-items-center h-custom-2 px-5 ms-xl-4 mt-5 pt-5 pt-xl-0 mt-xl-n5">
+
+					<form method="post" style="width: 23rem;" >
+
+            <h3 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Register</h3>
+						<div asp-validation-summary="All" class="text-danger"></div>
+
+						<div class="row">
+							<div class="col-md-6 mb-4">
+								<div class="form-outline">
+									<label class="form-label" asp-for="RModel.FirstName">First Name</label>
+									<input type="Text" asp-for="RModel.FirstName" class="form-control" />
+									<span asp-validation-for="RModel.FirstName" class="text-danger"></span>
+								</div>
+							</div>
+							<div class="col-md-6 mb-4">
+								<div class="form-outline">
+									<label class="form-label" asp-for="RModel.LastName">Last Name</label>
+									<input type="Text" asp-for="RModel.LastName" class="form-control" />
+									<span asp-validation-for="RModel.LastName" class="text-danger"></span>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6 mb-4">
+								<div class="form-outline">
+									<label class="col-sm-2 col-form-label" asp-for="RModel.Gender"></label>
+									<div class="col-sm-10 d-flex align-items-center">
+										<div class="form-check form-check-inline">
+											@Html.RadioButtonFor(m => m.RModel.Gender, "M", new {@class = "form-check-input"})
+											<label class="form-check-label">Male</label>
+										</div>
+										<div class="form-check form-check-inline">
+											@Html.RadioButtonFor(m => m.RModel.Gender, "F", new {@class = "form-check-input"})
+											<label class="form-check-label">Female</label>
+										</div>
+										<span asp-validation-for="RModel.Gender" class="text-danger"></span>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6 mb-4">
+								<div class="form-outline">
+									<label class="form-label" asp-for="RModel.NRIC">NRIC</label>
+									<input type="Text" asp-for="RModel.NRIC" class="form-control" />
+									<span asp-validaton-for="RModel.NRIC" class="text-danger"></span>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6 mb-4">
+								<div class="form-outline">
+									<label class="form-label" asp-for="RModel.Email">Email Address</label>
+									<input type="Text" asp-for="RModel.Email" class="form-control" />
+									<span asp-validaton-for="RModel.Email" class="text-danger"></span>
+								</div>
+							</div>
+							<div class="col-md-6 mb-4">
+								<div class="form-outline">
+									<label class="form-label" asp-for="RModel.BirthDate">Date Of Birth</label>
+									<input class="form-control" asp-for="RModel.BirthDate" min="1990-01-01" max="2004-12-30" />
+									<span asp-validation-for="RModel.BirthDate" class="text-danger"></span>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-outline mb-4">
+							<div class="mb-3">
+								<input type="file" accept=".pdf, .docx"  asp-for="RModel.Resume"
+									   class="form-control" onchange="" style="width: auto" />
+								<span asp-validation-for="RModel.Resume" class="text-danger"></span>
+							</div>
+						</div>
+
+
+						<div class="form-outline mb-4">
+							<label class="form-label" asp-for="RModel.WhoamI">WhoamI</label>
+							<input type="" asp-for="RModel.WhoamI" class="form-control" />
+							<span asp-validaton-for="RModel.WhoamI" class="text-danger"></span>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6 mb-4">
+								<div class="form-outline">
+									<label class="form-label" asp-for="RModel.Password">Password</label>
+									<input type="password" asp-for="RModel.Password" class="form-control" />
+									<span asp-validaton-for="RModel.Password" class="text-danger"></span>
+								</div>
+							</div>
+							<div class="col-md-6 mb-4">
+								<div class="form-outline">
+									<label class="form-label" asp-for="RModel.ConfirmPassword">Confirm Password</label>
+									<input type="password" asp-for="RModel.ConfirmPassword" class="form-control" />
+									<span asp-validaton-for="RModel.ConfirmPassword" class="text-danger"></span>
+								</div>
+							</div>
+						</div>
+						
+
+            <div class="pt-1 mb-4">
+              <button class="btn btn-info btn-lg btn-block" type="submit">Register</button>
+            </div>
+
+            <p>Have an account? <a href="/Login" class="link-info">Login here</a></p>
+
+          </form>
+
+        </div>
+
+      </div>
+      <div class="col-sm-6 px-0 d-none d-sm-block">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img3.webp"
+          alt="Login image" class="w-100 vh-100" style="object-fit: cover; object-position: left;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+	function showImgPreview(input) {
+		if (input.files[0]) {
+			var uploadimg = new FileReader();
+			uploadimg.onload = function (displayimg) {
+				$("#imgPreview").attr('src', displayimg.target.result);
+			}
+			uploadimg.readAsDataURL(input.files[0]);
+		}
+	}
+</script>
